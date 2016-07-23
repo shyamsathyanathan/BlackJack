@@ -2,7 +2,7 @@ package blackjack
 
 import "testing"
 
-var blackJackHand Hand = Hand { cards: []int {10, 11}, score: 21 }
+var blackJackHand Hand = Hand { cards: []int {10, 1}, score: 21 }
 var randomHand Hand = Hand { cards: []int {2, 2}, score: 4 }
 
 func TestPlayerWins (t *testing.T) {
@@ -18,6 +18,14 @@ func TestPlayerWins (t *testing.T) {
 func TestIfPlayerIsBlackjack (t *testing.T) {
     player := Player { hand: blackJackHand, name: "Player" }
     if !isBlackjack(player.hand) {
-      t.Errorf("The hand is not a blackjack hand")
+      t.Errorf("The Player does not have a blackjack hand")
     }
+}
+
+func TestComputeScoreForRandomHand (t *testing.T) {
+  hand := randomHand
+  score := computeScore(&hand)
+  if score != hand.score {
+    t.Errorf("Expected the score to be %d got %d", score, hand.score)
+  }
 }

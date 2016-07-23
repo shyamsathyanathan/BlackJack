@@ -7,7 +7,7 @@ type Game struct {
 }
 
 type Player struct {
-  hand Hand
+  hand Hand``
   name string
 }
 
@@ -28,4 +28,12 @@ func isBlackjack(hand Hand) bool {
     return true
   }
   return false
+}
+
+func computeScore(hand *Hand) int {
+  value := 0
+  for _, card := range hand.cards {
+    value = value + card
+  }
+  return value
 }
