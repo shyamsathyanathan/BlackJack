@@ -1,4 +1,4 @@
-package test
+package blackjack
 
 type Game struct {
   winningPlayer Player
@@ -18,6 +18,13 @@ type Hand struct {
 
 func equals (player1 Player, player2 Player) bool {
   if player1.name == player2.name {
+    return true
+  }
+  return false
+}
+
+func isBlackjack(hand Hand) bool {
+  if hand.score == 21 {
     return true
   }
   return false
